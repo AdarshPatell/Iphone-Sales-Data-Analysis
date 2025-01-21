@@ -1,16 +1,22 @@
 import streamlit as st
-
-# Define a function to display the home page
-import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import altair as alt
 
-def home_page():
-    # Set page configuration for wide layout
-    st.set_page_config(page_title="Font Size Example", layout="wide")
+# Set page configuration for wide layout
+st.set_page_config(page_title="Font Size Example", layout="wide")
 
+st.markdown("""
+<style>
+button:hover {
+    background-color:rgb(49, 99, 149); /* Darker green on hover */
     
+}
+</style>
+""", unsafe_allow_html=True)
+
+
+def home_page():
    
     # Add a centered heading and description
     st.markdown(
@@ -38,6 +44,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View USA"):
+            st.session_state.page = "usa"
 
     # Card 2
     with col2:
@@ -50,6 +59,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View India"):
+            st.session_state.page = "india"
 
     # Card 3
     with col3:
@@ -62,6 +74,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View UK"):
+            st.session_state.page = "uk"
 
     # Card 4
     with col4:
@@ -74,6 +89,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View Canada"):
+            st.session_state.page = "canada"
 
        # Add some spacing between the rows
     st.markdown("<br>", unsafe_allow_html=True)
@@ -92,6 +110,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View Germany"):
+            st.session_state.page = "germany"
 
     # Card 6
     with col6:
@@ -104,6 +125,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View Japan"):
+            st.session_state.page = "japan"
 
     # Card 7
     with col7:
@@ -116,6 +140,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View Australia"):
+            st.session_state.page = "australia"
 
     # Card 8
     with col8:
@@ -128,6 +155,9 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View China"):
+            st.session_state.page = "china"
     st.markdown("<br>", unsafe_allow_html=True)
 
     # Second row of cards
@@ -144,6 +174,10 @@ def home_page():
             """,
             unsafe_allow_html=True
         )
+        st.markdown("<br>", unsafe_allow_html=True)
+        if st.button("View Brazil"):
+            st.session_state.page = "brazil"
+        
    
    # Add more spacing
     st.markdown("<br><br>", unsafe_allow_html=True)
@@ -286,19 +320,90 @@ def home_page():
             st.altair_chart(chart, use_container_width=True)
         
 
-# Define a function to display the product page
-def product_page():
-    st.title("Product Page")
-    st.write("Welcome to the Product Page!")
-    if st.button("Go to Home Page"):
+# Function to render the USA page
+def usa_page():
+    st.title("USA Page")
+    st.write("Explore iPhone sales in the USA.")
+    if st.button("Back to Home"):
         st.session_state.page = "home"
 
-# Initialize session state for page navigation
-if "page" not in st.session_state:
-    st.session_state.page = "home"
+# Function to render the India page
+def india_page():
+    st.title("India Page")
+    st.write("Explore iPhone sales in India.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
 
-# Render the appropriate page based on the session state
-if st.session_state.page == "home":
+# Function to render the UK page
+def uk_page():
+    st.title("UK Page")
+    st.write("Explore iPhone sales in the UK.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
+
+# Function to render the Canada page
+def canada_page():
+    st.title("Canada Page")
+    st.write("Explore iPhone sales in Canada.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
+
+def germany_page():
+    st.title("USA Page")
+    st.write("Explore iPhone sales in the USA.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
+
+# Function to render the India page
+def japan_page():
+    st.title("India Page")
+    st.write("Explore iPhone sales in India.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
+
+# Function to render the UK page
+def australia_page():
+    st.title("UK Page")
+    st.write("Explore iPhone sales in the UK.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
+
+# Function to render the Canada page
+def china_page():
+    st.title("Canada Page")
+    st.write("Explore iPhone sales in Canada.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
+
+# Function to render the Canada page
+def brazil_page():
+    st.title("Canada Page")
+    st.write("Explore iPhone sales in Canada.")
+    if st.button("Back to Home"):
+        st.session_state.page = "home"
+
+# Initialize session state for page tracking
+if 'page' not in st.session_state:
+    st.session_state.page = 'home'
+
+# Render the appropriate page based on session state
+if st.session_state.page == 'home':
     home_page()
-elif st.session_state.page == "product":
-    product_page()
+elif st.session_state.page == 'usa':
+    usa_page()
+elif st.session_state.page == 'india':
+    india_page()
+elif st.session_state.page == 'uk':
+    uk_page()
+elif st.session_state.page == 'canada':
+    canada_page()
+elif st.session_state.page == 'germany':
+    germany_page()
+elif st.session_state.page == 'japan':
+    japan_page()
+elif st.session_state.page == 'australia':
+    australia_page()
+elif st.session_state.page == 'china':
+    china_page()
+elif st.session_state.page == 'brazil':
+    brazil_page()
